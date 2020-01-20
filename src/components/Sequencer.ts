@@ -7,22 +7,22 @@ class Sequencer extends EventTarget {
     private midi: MidiApi;
     private tracks: { [key in Tracks]: Track } = {
         [Tracks.KICK]: {
-            n: 8,
-            k: 4,
+            n: 7,
+            k: 5,
             beat: 0,
             pattern: [],
             note: Drum808.KICK
         },
         [Tracks.SNARE]: {
             n: 8,
-            k: 2,
+            k: 3,
             beat: 0,
             pattern: [],
             note: Drum808.SNARE
         },
         [Tracks.HIHAT]: {
-            n: 8,
-            k: 5,
+            n: 14,
+            k: 6,
             beat: 0,
             pattern: [],
             note: Drum808.HIHAT
