@@ -4,14 +4,15 @@ export enum Drum808 {
     HIHAT = "F#2"
 }
 
-export enum Tracks {
+export enum Instrument {
     KICK,
     SNARE,
     HIHAT
 }
 
-export interface Track {
+export interface TrackData {
     note: Drum808;
+    clockDividor: number;
     beat: number;
     k: number;
     n: number;

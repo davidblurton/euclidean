@@ -3,15 +3,16 @@ import { useLayoutEffect, useReducer, useRef, useState } from 'preact/hooks';
 
 import MidiApi from './MidiApi';
 import Sequencer from './Sequencer';
-import { Tracks } from './types';
+import { Instrument } from './types';
 
 export const midi = new MidiApi();
 export const sequencer = new Sequencer(midi);
 
 export const SequencerContext = createContext(sequencer);
 
-midi.addEventListener("beat", sequencer.handleBeat.bind(sequencer));
+midi.addEventListener("clock", sequencer.handleClock.bind(sequencer));
 midi.addEventListener("start", sequencer.handleStart.bind(sequencer));
+midi.addEventListener("stop", sequencer.handleStop.bind(sequencer));
 
 function createUseSequencerHook() {
     return function() {

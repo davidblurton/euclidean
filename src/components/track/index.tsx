@@ -1,20 +1,19 @@
-import er from 'euclidean-rhythms';
 import { h } from 'preact';
 import { useContext, useState } from 'preact/hooks';
 
 import Euclidean from '../../components/euclidean';
 import Slider from '../../components/slider';
 import { SequencerContext, useSequencer } from '../../components/store';
-import { Tracks } from '../types';
+import { Instrument } from '../types';
 import style from './style.css';
 
 interface Props {
-    track: Tracks;
+    track: Instrument;
 }
 
 const Track: preact.FunctionalComponent<Props> = ({ track }) => {
     // const [getRotation, setRotation] = useState(0);
-    const [foo, setFoo] = useState(0);
+    const [_, setFoo] = useState(0);
 
     const sequencer = useContext(SequencerContext);
     sequencer.addEventListener("update", () => setFoo(i => i + 1));

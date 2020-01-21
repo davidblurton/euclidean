@@ -79,6 +79,7 @@ const Euclidean: preact.FunctionalComponent<Props> = ({
             width={width}
             height={height}
             xmlns="http://www.w3.org/2000/svg"
+            style={{ width: "30vw", height: "30vw" }}
         >
             <polygon
                 points={toPolygonPoints(points)}

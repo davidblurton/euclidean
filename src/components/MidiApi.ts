@@ -1,11 +1,8 @@
 import WebMidi, { INoteParam, Input, Output } from 'webmidi';
 
-const CLOCK_DIVIDOR = 12;
-
 class MidiApi extends EventTarget {
     private input?: Input;
     private output?: Output;
-    private clock: number = 0;
 
     public connect() {
         WebMidi.enable(err => {
@@ -18,16 +15,15 @@ class MidiApi extends EventTarget {
             this.output = WebMidi.outputs[0];
 
             this.input.on("clock", "all", () => {
-                this.clock++;
-
-                if (this.clock === CLOCK_DIVIDOR) {
-                    this.dispatchEvent(new Event("beat"));
-                    this.clock = 0;
-                }
+                this.dispatchEvent(new Event("clock"));
             });
 
             this.input.on("start", "all", () => {
-                this.clock = 0;
+                this.dispatchEvent(new Event("start"));
+            });
+
+            this.input.on("stop", "all", () => {
+                this.dispatchEvent(new Event("stop"));
             });
         });
     }
